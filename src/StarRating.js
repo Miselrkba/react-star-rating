@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaStar } from "react-icons/fa";
 
-const StarRating = ({ totalStars = 5, selectedStars = 0 }) => {
+const StarRating = ({
+  totalStars = 5,
+  selectedStars = 0,
+  onRate = (f) => f,
+}) => {
   //   const [selectedStars, setSelectedStars] = useState(0);
   const createArray = (length) => [...Array(length)];
 
@@ -15,7 +19,7 @@ const StarRating = ({ totalStars = 5, selectedStars = 0 }) => {
         <Star
           key={i}
           selected={selectedStars > i}
-          //   onSelect={() => setSelectedStars(i + 1)}
+          onSelect={() => onRate(i + 1)}
         />
       ))}
       <p>
